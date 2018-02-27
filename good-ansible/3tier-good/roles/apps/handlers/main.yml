@@ -1,0 +1,9 @@
+## handlers for apps host group
+---
+
+- name: activate httpd
+  service: name=httpd enabled=yes state=started
+
+- name: activate tomcat
+  service: name=tomcat enabled=yes state=started
+

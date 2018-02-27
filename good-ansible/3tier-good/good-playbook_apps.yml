@@ -1,0 +1,11 @@
+- name: Install three tier applications on apps host group
+  hosts: apps
+  gather_facts: false
+  become: true
+  vars:
+     GUID: "6e2f"
+
+  roles:
+    - { role: "./roles/common" }
+    - { role: "./roles/apps" }
+

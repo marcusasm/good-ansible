@@ -1,0 +1,47 @@
+
+1st iteration
+- moved static index.html files from individual app1/app2 hosts to group apps
+- error in indentation inside HAProxy
+- unified package instalation under yum module
+- http => httpie
+- autodetect when postgresql needs initdb to run
+- cleanup call of yum and service modules
+<execute ansible-playbook (...) with --syntax-check>
+<execute ansible-playbook (...)>
+
+2nd iteration
+< execute ansible-playbook (...) with --step>
+ - setup GUID var for haproxy template
+
+3rd iteration
+ - copy index.html templates to <tomcat>/webapps/ROOT 
+   (or should them be copied to <tomcat>/webapps/ansible>????????????????>
+
+4th iteration
+ - make deploy/install/config user feedback for pg clear
+ - pginit was undefined
+ - note: cleanup.yml does not cleans /var/lib/pgsql/data
+
+5th iteration
+ - put ignore_errors while checking for pgsql initdb && update user feedback
+
+6th iteration
+ - put template files under <templates> dir
+
+7h iteration
+ - global vars (all:vars and group_vars/all configs did _NOT_ work)
+ - group plays in three sections: repo, apps, frontends, appdbs
+
+8th iteration
+ - install packages and enable them using loops
+
+9th iteration
+ - migrate plays to rules: common (repo setup), apps, frontends, appdbs
+
+10th iteration
+ - use handlers
+
+11th iteration
+ - unify enabling and starting services on the same handler
+
+

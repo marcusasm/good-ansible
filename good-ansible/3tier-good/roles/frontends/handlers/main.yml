@@ -1,0 +1,6 @@
+## handlers for frontends host group
+---
+- name: activate haproxy
+  service: name=haproxy enabled=yes state=started
+
+

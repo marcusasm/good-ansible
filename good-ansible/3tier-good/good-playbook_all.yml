@@ -1,0 +1,6 @@
+---
+# calls all playbooks
+- import_playbook: good-playbook_apps.yml
+- import_playbook: good-playbook_appdbs.yml
+- import_playbook: good-playbook_frontends.yml
+

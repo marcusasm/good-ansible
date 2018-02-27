@@ -1,0 +1,32 @@
+---
+############################## appdbs
+
+  - name: install postgresql
+    yum:
+      name: postgresql-server
+      state: latest
+    notify:
+       - activate postgresql
+
+  - name: check if initdb is needed. Error is expected on 1st run. Ignore.
+    shell:
+      test "$(ls /var/lib/pgsql/data/)"
+    register: pginit
+    # go on to next task if directory is empty
+    ignore_errors: yes 
+    changed_when: false
+  
+  - name: run initdb
+    when: "pginit.rc != 0"
+    shell: 
+      "postgresql-setup initdb"
+    notify: 
+      - activate postgresql
+
+# ensures postgresql is always started and enabled
+  - name: start and enable postgres
+    command: /bin/true
+    notify:
+       - activate postgresql
+
+

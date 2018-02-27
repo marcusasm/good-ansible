@@ -1,0 +1,7 @@
+## handlers for appdbs host group
+---
+
+# restarts and enables postgresql on boot
+- name: activate postgresql
+  service: name=postgresql enabled=yes state=started
+

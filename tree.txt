@@ -1,0 +1,38 @@
+[marcusasm-primeinformatica.com.b@bastion 3tier-good]$ tree
+.
+├── ansible.cfg
+├── cleanup.yml
+├── good-playbook_all.yml
+├── good-playbook_appdbs.yml
+├── good-playbook_apps.yml
+├── good-playbook_frontends.yml
+├── hosts
+├── purge.yml
+├── roles
+│   ├── appdbs
+│   │   ├── handlers
+│   │   │   └── main.yml
+│   │   └── tasks
+│   │       └── main.yml
+│   ├── apps
+│   │   ├── handlers
+│   │   │   └── main.yml
+│   │   └── tasks
+│   │       └── main.yml
+│   ├── cleaner
+│   │   └── tasks
+│   │       └── main.yml
+│   ├── common
+│   │   └── tasks
+│   │       └── main.yml
+│   └── frontends
+│       ├── handlers
+│       │   └── main.yml
+│       └── tasks
+│           └── main.yml
+├── ssh.cfg
+└── templates
+    ├── haproxy.cfg.j2
+    ├── index.html.app.j2
+    └── open_three-tier-app.repo
+

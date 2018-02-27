@@ -1,0 +1,10 @@
+- name: Install three tier applications on frontends host group
+  hosts: frontends
+  gather_facts: false
+  become: true
+  vars:
+     GUID: "6e2f"
+
+  roles:
+    - { role: "./roles/common" }
+    - { role: "./roles/frontends" }

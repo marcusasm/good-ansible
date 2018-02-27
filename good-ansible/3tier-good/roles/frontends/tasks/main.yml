@@ -1,0 +1,24 @@
+---
+############################## frontends
+  - name: install httpie and haproxy
+    yum:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - httpie
+      - haproxy
+    notify:
+      - activate haproxy
+ 
+  - name: configure HAProxy
+    template:
+      src: templates/haproxy.cfg.j2
+      dest: /etc/haproxy/haproxy.cfg
+    notify:
+      - activate haproxy
+
+# ensures postgresql is always started and enabled
+  - name: start and enable HAproxy
+    command: /bin/true
+    notify:
+      - activate haproxy

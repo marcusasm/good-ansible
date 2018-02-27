@@ -1,0 +1,30 @@
+---
+
+  - name: install apache and tomcat on apps group
+    yum:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - httpd
+      - tomcat
+    notify:
+       - activate httpd
+       - activate tomcat
+
+  - name: creates ROOT tomcat directory
+    file:
+      path: /usr/share/tomcat/webapps/ROOT
+      state: directory
+      mode: 0755
+
+  - name: copy static index.html to tomcat ROOT
+    template:
+      src: templates/index.html.app.j2
+      dest: /usr/share/tomcat/webapps/ROOT/index.html
+      mode: 0644
+
+  - name: ensures apache and tomcat are enabled and started
+    command: /bin/true
+    notify:
+       - activate httpd
+       - activate tomcat
